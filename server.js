@@ -5,12 +5,63 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var ArticleOne={
+    title:'Aishwarya Chabukwar',
+    heading:'My firt article',
+    date: '5 sept,2016',
+    content:`   <p>
+      This is my first Article.Article (grammar), a grammatical element used to indicate definiteness or indefiniteness. Article (publishing), a piece of nonfictional prose that is an independent part of a publication. Articles of Confederation, the predecessor to the current United States Constitution.
+      </p>
+    
+        <p> This is my first Article.Article (grammar), a grammatical element used to indicate definiteness or indefiniteness. Article (publishing), a piece of nonfictional prose that is an independent part of a publication. Articles of Confederation, the predecessor to the current United States Constitution.</p>
+            <p> This is my first Article.Article (grammar), a grammatical element used to indicate definiteness or indefiniteness. Article (publishing), a piece of nonfictional prose that is an independent part of a publication. Articles of Confederation, the predecessor to the current United States Constitution.</p>`
+            
+};
+function createtemplate (data){
+    
+    var title=data.title;
+    var heading=data.heading;
+    var content=data.content;
+    var date=data.date;
+    
+var htmltemplate=`
+<html>
+    <head><title>Article-one | Aishwarya Chabukswar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="/ui/style.css" rel="stylesheet" />
+     </head>
+    <body>
+        <div class="container">
+        <div>
+            <a href='\'>Home</a>
+        </div>
+        <hr/>
+        <h3>
+            ${heding}
+        </h3>
+        <div>
+            ${date}
+        </div>
+        
+        <div>
+           ${content}
+        </div>
+        </div>
+    </body>
+    </html>
+;
+return htmltemplate;
+}
+    
+    
+
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 app.get('/article-one',function(req,res){
-     res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+     res.send(createtemplate(ArticleOne));
    });
 
 app.get('/article-two',function(req,res){
