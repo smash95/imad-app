@@ -4,8 +4,8 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-
-var ArticleOne={
+var Articles={
+'Article-One':{
     title:'Aishwarya Chabukwar',
     heading:'My firt article',
     date: '5 sept,2016',
@@ -16,6 +16,24 @@ var ArticleOne={
         <p> This is my first Article.Article (grammar), a grammatical element used to indicate definiteness or indefiniteness. Article (publishing), a piece of nonfictional prose that is an independent part of a publication. Articles of Confederation, the predecessor to the current United States Constitution.</p>
             <p> This is my first Article.Article (grammar), a grammatical element used to indicate definiteness or indefiniteness. Article (publishing), a piece of nonfictional prose that is an independent part of a publication. Articles of Confederation, the predecessor to the current United States Constitution.</p>`
             
+},
+'Article-Two':{
+    title:'Aishwarya Chabukwar',
+    heading:'My second article',
+    date: '10 sept,2016',
+    content:`   <p>
+      This is my second Article.Article (grammar), a grammatical element used to indicate definiteness or indefiniteness. Article (publishing), a piece of nonfictional prose that is an independent part of a publication. Articles of Confederation, the predecessor to the current United States Constitution.
+      </p>`
+},
+'Article-Three': {
+    title:'Aishwarya Chabukwar',
+    heading:'My Thrid article',
+    date: '15 sept,2016',
+    content:`   <p>
+      This is my third Article.Article (grammar), a grammatical element used to indicate definiteness or indefiniteness. Article (publishing), a piece of nonfictional prose that is an independent part of a publication. Articles of Confederation, the predecessor to the current United States Constitution.
+      </p>`
+
+}
 };
 function createtemplate (data){
     
@@ -60,17 +78,10 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one',function(req,res){
-     res.send(createtemplate(ArticleOne));
+app.get('/:articleName',function(req,res){
+    var articleName=req.parans.articleName;
+    res.send(createtemplate(Articles[articleName]));
    });
-
-app.get('/article-two',function(req,res){
-         res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-
-app.get('/article-three',function(req,res){
-     res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-});
 
 
 app.get('/ui/style.css', function (req, res) {
