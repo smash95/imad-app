@@ -37,7 +37,7 @@ var htmltemplate=`
         </div>
         <hr/>
         <h3>
-            ${heding}
+            ${heading}
         </h3>
         <div>
             ${date}
