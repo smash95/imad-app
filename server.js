@@ -19,7 +19,7 @@ var ArticleOne={
 };
 function createtemplate (data){
     
-    var title=data.title;
+
     var heading=data.heading;
     var content=data.content;
     var date=data.date;
@@ -48,8 +48,8 @@ var htmltemplate=`
         </div>
         </div>
     </body>
-    </html>
-;
+    </html>`
+;  
 return htmltemplate;
 }
     
